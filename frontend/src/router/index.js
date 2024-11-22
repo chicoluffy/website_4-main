@@ -4,7 +4,7 @@ import LoginPage from '@/views/LoginPage.vue';
 
 const routes = [
   { path: '/', name: 'LoginPage', component: LoginPage },
-  { path: '/home', name: 'HomePage', component: HomePage },
+  { path: '/home', name: 'HomePage', component: HomePage,meta:{requiresAuth:true} },
 ];
 
 const router = createRouter({
