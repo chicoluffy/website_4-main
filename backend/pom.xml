@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.starsol</groupId>
+		<artifactId>website-app</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>backend</artifactId>
+	
+	<name>backend</name>
+   	<description>Backend module for our example project</description>
+	<packaging>jar</packaging>
+
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+	<url/>
+	</scm>
+	<properties>
+		<java.version>17</java.version>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+       	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.5.14</version> <!-- Updated to a version without known vulnerabilities -->
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.20</version> <!-- Add the appropriate version here -->
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>2.5.14</version> <!-- Add the appropriate version here -->
+			<scope>test</scope>
+		</dependency>
+
+		<!-- <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-tomcat</artifactId>
+           <scope>provided</scope>
+       </dependency> -->
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<!-- limpia las carpetas donde se guarda el front compilado-->
+			<plugin>
+               <artifactId>maven-clean-plugin</artifactId>
+               <configuration>
+                   <filesets>
+                       <fileset>
+                           <directory>${project.build.directory}/classes/static</directory>
+ 							<includes>
+                               <include>**/*</include>
+                           </includes>
+                       </fileset>
+                   </filesets>
+               </configuration>
+           </plugin>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version> <!-- Puedes ajustar la versión del plugin si es necesario -->
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+			<!-- Plugin para copiar los archivos estáticos generados por Vue.js -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>3.2.0</version>
+            <executions>
+               <!-- Primera ejecución: copiar a target/classes/static (directorio estándar de Maven) -->
+                <execution>
+                    <id>copy-to-target</id>
+                    <phase>prepare-package</phase> <!-- Se ejecuta en la fase 'prepare-package' -->
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${project.build.directory}/classes/static</outputDirectory>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}/../frontend/dist</directory> <!-- Ruta del build de Vue -->
+                                <includes>
+                                    <include>**/*</include>
+                                </includes>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+
+                <!-- Segunda ejecución: copiar a src/main/resources/static -->
+                <execution>
+                    <id>copy-to-static</id>
+                    <phase>prepare-package</phase> <!-- Se ejecuta también en la fase 'prepare-package' -->
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${project.basedir}/src/main/resources/static</outputDirectory>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}/../frontend/dist</directory>
+                                <includes>
+                                    <include>**/*</include>
+                                </includes>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
+        <!-- Plugin para manejar el proceso de compilación -->
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <!-- Asegúrate de especificar una versión aquí -->
+            <version>3.2.1</version>
+        </plugin>
+
+		<!-- <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>3.2.4</version>
+            <configuration>
+                <mainClass>com.starsol.backend.WebsiteApplication</mainClass> 
+            </configuration>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin> -->
+		</plugins>
+	</build>
+
+</project>
