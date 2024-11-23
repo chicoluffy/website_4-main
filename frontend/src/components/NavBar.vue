@@ -10,6 +10,7 @@
           <p>UTC Time: {{ utcTime }}</p>
         </div>
         <div>
+          <LogoutBtn/>
           <SwitchBtn :isDarkMode="isDarkMode"/>
         </div>
     </div>
@@ -17,11 +18,13 @@
 </template>
 <script>
   import SwitchBtn from '@/components/SwitchBtn.vue';
+  import LogoutBtn from './LogoutBtn.vue';
   export default {
 
     name: 'NavBar',
     components: {
-      SwitchBtn
+      SwitchBtn,
+      LogoutBtn
     },
     props: {
       isDarkMode: {
