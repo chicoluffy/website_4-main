@@ -10,8 +10,8 @@ const routes = [
     path: '/home',
     component: MainLayout,
     children: [
-        { path: 'home', name: 'HomePage', component: HomePage },
-      { path: 'user', name: 'UserView', component: UserView }
+        { path: '', name: 'HomePage', component: HomePage }, // Ruta base de MainLayout
+        { path: 'user', name: 'UserView', component: UserView }
     ],
     meta: { requiresAuth: true }
   }

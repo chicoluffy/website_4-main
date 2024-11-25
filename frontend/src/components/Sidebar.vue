@@ -23,7 +23,7 @@
         data(){
             return{
                 menuItems:[
-                    {text: 'User', link: '/user',icon:'fas fa-user'},
+                    {text: 'User', link: '/home/user',icon:'fas fa-user'},
                     {text: 'Customer Reports', link: '/profile',icon:'fa-solid fa-users-viewfinder'},
                     {text: 'WHT', link: '/profile',icon:'fa-solid fa-square-poll-vertical'},
                     {text: 'Stats', link: '/profile',icon:'fa-solid fa-chart-simple'},

@@ -38,19 +38,4 @@ export default {
   background-color: white;
   color: black;
 }
-.main-content {
-  display: flex;
-  flex: 1;
-}
-.sidebar {
-  width: 200px;
-  transition: background-color 0.3s;
-}
-.content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 </style>

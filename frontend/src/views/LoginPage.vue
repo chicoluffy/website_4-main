@@ -1,7 +1,7 @@
 
 <template>
   <div :class="['login-page',{'dark-mode': isDarkMode}]">
-    <SwitchBtn  :isDarkMode="isDarkMode"/>
+    <SwitchBtn  :isDarkMode="isDarkMode" class="switch-btn"/>
     <LoginForm :isDarkMode="isDarkMode"/>
   </div>
 </template>
@@ -49,4 +49,9 @@ export default {
     color: #2A3B47;
   }
  
+  .switch-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
 </style>

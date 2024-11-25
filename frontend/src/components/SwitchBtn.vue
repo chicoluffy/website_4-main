@@ -28,12 +28,10 @@ export default{
      /*comienza el switch para cambiar de color */ 
   .switch {
   font-size: 17px;
-  position: absolute;
   display: inline-block;
   width: 3.5em;
   height: 2em;
-  top : 1.3em;
-  right: 1.3em;
+  position: relative;
 }
 .switch input {
   opacity: 0;

@@ -9,7 +9,7 @@
           <p>Local Time: {{ localTime }}</p>
           <p>UTC Time: {{ utcTime }}</p>
         </div>
-        <div>
+        <div class="actions">
           <LogoutBtn/>
           <SwitchBtn :isDarkMode="isDarkMode"/>
         </div>
@@ -94,5 +94,12 @@ nav:not(.dark-mode) li a{
 
 .time p {
   margin: 0;
+}
+.actions{
+  display: flex;
+  align-items: center;
+}
+.actions > *{
+  margin-left: 10px;
 }
 </style>
