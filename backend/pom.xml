@@ -33,12 +33,13 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
        	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring.boot.version>3.4.0</spring.boot.version> <!--  última versión de Spring Boot es la 3.4.0, a fecha de noviembre de 2024. -->
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<version>2.5.14</version> <!-- Updated to a version without known vulnerabilities -->
+			<version>${spring.boot.version}</version> <!-- Updated to a version without known vulnerabilities -->
 		</dependency>
 
 		<dependency>
@@ -50,7 +51,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<version>2.5.14</version> <!-- Add the appropriate version here -->
+			<version>${spring.boot.version}</version> <!-- Add the appropriate version here -->
 			<scope>test</scope>
 		</dependency>
 
@@ -106,7 +107,7 @@
             <executions>
                <!-- Primera ejecución: copiar a target/classes/static (directorio estándar de Maven) -->
                 <execution>
-                    <id>copy-to-target</id>
+                    <id>copy-to-static</id>
                     <phase>prepare-package</phase> <!-- Se ejecuta en la fase 'prepare-package' -->
                     <goals>
                         <goal>copy-resources</goal>
@@ -116,6 +117,7 @@
                         <resources>
                             <resource>
                                 <directory>${basedir}/../frontend/dist</directory> <!-- Ruta del build de Vue -->
+                                <filtering>false</filtering>
                                 <includes>
                                     <include>**/*</include>
                                 </includes>
@@ -126,7 +128,7 @@
 
                 <!-- Segunda ejecución: copiar a src/main/resources/static -->
                 <execution>
-                    <id>copy-to-static</id>
+                    <id>copy-to-target</id>
                     <phase>prepare-package</phase> <!-- Se ejecuta también en la fase 'prepare-package' -->
                     <goals>
                         <goal>copy-resources</goal>

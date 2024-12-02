@@ -1,5 +1,5 @@
 <template>
-    <div class="page-container">
+    <div :class="['page-container', { 'dark-mode': isDarkMode }]">
     <h1>Finance System</h1>
     <div class="login-container">
       <form class="login-form" @submit.prevent="submitForm">
@@ -25,7 +25,15 @@
   </div>
 </template>
 <script>
+  import axios from 'axios';
     export default {
+        name: 'LoginForm',
+        props: {
+          isDarkMode: {
+            type: Boolean,
+            required: true
+          }
+        },
         data(){
             return {
                 username: '',
@@ -33,12 +41,22 @@
             };
         },
         methods : {
-            submitForm(){
-                if(this.username === 'admin' && this.password === 'admin'){
+            async submitForm(){
+                try{
+                    const apiUrl = process.env.VUE_APP_API_URL;
+                    const  response = await axios.post(`${apiUrl}/validate`, {
+                        username: this.username,
+                        password: this.password,
+                        token: '123456',
+                        method: 'POST',});
+                    if(!response.data){
+                      alert('Invalid credentials');
+                    }
                     localStorage.setItem('auth', 'true');
                     this.$router.push('/home');
-                } else {
-                    alert('Invalid credentials');
+                }catch(error){
+                    console.error(error);
+                    alert('An error occurred', error);
                 }
             }
         }
@@ -57,14 +75,15 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh; /* Altura completa de la ventana */
+  transition: background-color 0.3s;
 }
+
 
 h1 {
   margin-bottom: 20px; /* Espacio entre el título y el formulario */
 }
 
 .login-container {
-  background-color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);

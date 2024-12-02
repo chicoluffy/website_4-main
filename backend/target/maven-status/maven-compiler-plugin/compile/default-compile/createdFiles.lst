@@ -1,1 +1,4 @@
+com\starsol\website\controllers\userController.class
+com\starsol\website\service\UserServices.class
+com\starsol\website\models\LoginModels.class
 com\starsol\website\WebsiteApplication.class
