@@ -7,6 +7,7 @@ import com.starsol.website.service.UserServices;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/users")
-
+@CrossOrigin(origins = "http://localhost:8081")//para que se pueda comunicar con el front(Cambiar esto despues)
 public class userController {
     @Autowired
     private UserServices userServices;
