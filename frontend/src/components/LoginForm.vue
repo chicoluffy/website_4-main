@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-  import axios from 'axios';
+  //import axios from 'axios';
     export default {
         name: 'LoginForm',
         props: {
@@ -41,7 +41,16 @@
             };
         },
         methods : {
-            async submitForm(){
+          submitForm() {
+      if (this.username === 'admin' && this.password === 'admin') {
+        localStorage.setItem('auth', 'true');
+        this.$router.push('/division');
+      } else {
+        alert('Invalid credentials');
+      }
+    }
+          
+            /*async submitForm(){
                 try{
                     const apiUrl = process.env.VUE_APP_API_URL;
                     const  response = await axios.post(`${apiUrl}/validate`, {
@@ -58,7 +67,7 @@
                     console.error(error);
                     alert('An error occurred', error);
                 }
-            }
+            }*/
         }
     };
 </script>
