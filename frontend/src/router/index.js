@@ -3,9 +3,11 @@ import HomePage from '@/views/HomePage.vue';
 import LoginPage from '@/views/LoginPage.vue';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import UserView from '@/views/UserView.vue';
+import DivisionPage from '@/views/DivisionPage.vue';
 
 const routes = [
   { path: '/', name: 'LoginPage', component: LoginPage },
+  {path: '/Division', name:'DivisionPage', component: DivisionPage,meta: { requiresAuth: true }},
   {
     path: '/home',
     component: MainLayout,
