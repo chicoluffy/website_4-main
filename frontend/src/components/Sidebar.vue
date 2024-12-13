@@ -29,7 +29,7 @@
                     {text: 'Stats', link: '/profile',icon:'fa-solid fa-chart-simple'},
                     {text: 'Failed Deposits', link: '/profile',icon:'fa-regular fa-thumbs-down'},
                     {text: 'Search', link: '/profile',icon:'fa-solid fa-magnifying-glass'},
-                    {text: 'Single Deposits', link: '/profile',icon:'fa-solid fa-money-bill-transfer'},
+                    {text: 'Single Deposits', link: '/home/singleDeposit',icon:'fa-solid fa-money-bill-transfer'},
                     {text: 'Import CSV', link: '/home/CSV',icon:'fa-solid fa-money-bill-transfer'},
                 ]
             };
