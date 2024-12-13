@@ -5,6 +5,7 @@ import MainLayout from '@/Layouts/MainLayout.vue';
 import UserView from '@/views/UserView.vue';
 import DivisionPage from '@/views/DivisionPage.vue';
 import CsvPage from '@/views/CsvPage.vue';
+import SingleDeposit from '@/views/SingleDeposit.vue';
 
 const routes = [
   { path: '/', name: 'LoginPage', component: LoginPage },
@@ -15,7 +16,8 @@ const routes = [
     children: [
         { path: '', name: 'HomePage', component: HomePage }, // Ruta base de MainLayout
         { path: 'user', name: 'UserView', component: UserView },
-        {path: 'csv', name: 'CsvPage', component: CsvPage}
+        {path: 'csv', name: 'CsvPage', component: CsvPage},
+        {path: 'singleDeposit', name: 'SingleDeposit', component: SingleDeposit},
     ],
     meta: { requiresAuth: true }
   }
