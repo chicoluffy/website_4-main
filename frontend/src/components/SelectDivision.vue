@@ -2,7 +2,7 @@
     <div :class="['select-container',{ 'dark-mode': isDarkMode }]" >
         <label for="icon-select" class="select-label">Select a countrie:</label>
         <div class="select-wrapper">
-            <select class="styled-select" v-model="selectedOption" @change="onSelectChange">
+            <select class="styled-select" :class="{'dark-mode': isDarkMode}" v-model="selectedOption" @change="onSelectChange">
                 <option disabled value="">Please select one</option>
                 <option v-for="option in options" :key="option.value" :value="option.value">
                  {{ option.label }}
@@ -83,20 +83,25 @@
     position: relative;
     width: 100%;
 }
-.styled-select.dark-mode {
+.styled-select {
     width: 100%;
-    padding: 0.6rem;
-    font-size: 0.9rem;
-    border: 1px solid #ccc;
-    border-radius: 0.2rem;
-    background-color: #192229;
-    color : #a0a7ac;
-    appearance: none;/* Elimina el estilo por defecto del navegador */
-    -webkit-appearance: none; /* Elimina el estilo por defecto del navegador en Safari */
-    -moz-appearance: none;/* Elimina el estilo por defecto del navegador en Firefox */
-    background-repeat: no-repeat;
-    background-position: right 0.6rem center;
-    background-size: 0.9rem 0.9rem;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: #333;
+  appearance: none; /* Elimina el estilo por defecto del navegador */
+  -webkit-appearance: none; /* Elimina el estilo por defecto del navegador en Safari */
+  -moz-appearance: none; /* Elimina el estilo por defecto del navegador en Firefox */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px 16px;
+}
+.styled-select.dark-mode {
+  background-color: #2a3b47;
+  color: #52A5E0;
+  border: 1px solid #52A5E0;
 }
 .styled-select:focus.dark-mode{
     border-color: #192229;

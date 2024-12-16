@@ -6,6 +6,8 @@ import UserView from '@/views/UserView.vue';
 import DivisionPage from '@/views/DivisionPage.vue';
 import CsvPage from '@/views/CsvPage.vue';
 import SingleDeposit from '@/views/SingleDeposit.vue';
+import RollBasePage from '@/views/RollBasePage.vue';
+import DepWithPage from '@/views/DepWithPage.vue';
 
 const routes = [
   { path: '/', name: 'LoginPage', component: LoginPage },
@@ -18,6 +20,8 @@ const routes = [
         { path: 'user', name: 'UserView', component: UserView },
         {path: 'csv', name: 'CsvPage', component: CsvPage},
         {path: 'singleDeposit', name: 'SingleDeposit', component: SingleDeposit},
+        {path: 'rollPage', name: 'RollBasePage', component: RollBasePage},
+        {path: 'DepWithPage', name: 'DepWithPage', component: DepWithPage}
     ],
     meta: { requiresAuth: true }
   }
