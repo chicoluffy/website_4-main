@@ -23,12 +23,9 @@
         data(){
             return{
                 menuItems:[
-                    {text: 'User', link: '/home/user',icon:'fas fa-user'},
-                    {text: 'Customer Reports', link: '/profile',icon:'fa-solid fa-users-viewfinder'},
-                    {text: 'WHT', link: '/profile',icon:'fa-solid fa-square-poll-vertical'},
-                    {text: 'Stats', link: '/profile',icon:'fa-solid fa-chart-simple'},
-                    {text: 'Failed Deposits', link: '/profile',icon:'fa-regular fa-thumbs-down'},
-                    {text: 'Search', link: '/profile',icon:'fa-solid fa-magnifying-glass'},
+                    {text: 'Deposit & Withdrawals', link: '/home/DepWithPage',icon:'fas fa-user'},
+                    //{text: 'Customer Reports', link: '/',icon:'fa-solid fa-users-viewfinder'},
+                    {text: 'User Roll', link: '/home/rollPage',icon:'fa-solid fa-users-viewfinder'},
                     {text: 'Single Deposits', link: '/home/singleDeposit',icon:'fa-solid fa-money-bill-transfer'},
                     {text: 'Import CSV', link: '/home/CSV',icon:'fa-solid fa-money-bill-transfer'},
                 ]
@@ -39,7 +36,7 @@
 
 <style scoped>
 .sidebar {
-  width: 200px;
+  width: 100%;
   height: 100vh;
   transition: background-color 0.3s;
 }
@@ -54,6 +51,7 @@
   color: black;
 }
 ul {
+  width: 100%;
   list-style: none; /* Quitar el círculo */
   padding: 0;
   margin: 0;
@@ -71,7 +69,7 @@ li a {
 }
 
 .menu-icon {
-  margin-right: 0.6rem; /* Ajustar este valor para separar más los iconos del texto */
+  margin-right: 0.25rem; /* Ajustar este valor para separar más los iconos del texto */
 }
 
 .sidebar.dark-mode li a {

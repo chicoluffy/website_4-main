@@ -4,7 +4,7 @@
         <div :class="['CSV-page']">
             <h1>Upload CSV File</h1>
             <div class="file-upload-wrapper">
-                <input type="file" @change="handleFileUpload" ref="fileInput" />
+                <input type="file" @change="handleFileUpload" ref="fileInput" accept=".csv" />
                 <button @click="triggerFileInput">Choose File</button>
                 <span :class="[{'dark-mode':isDarkMode}]" v-if="selectedFile">{{ selectedFile.name }}</span>
                 <span :class="[{'dark-mode':isDarkMode}]" v-else>No file selected</span>
@@ -16,6 +16,7 @@
     
 </template>
 <script>
+import Papa from 'papaparse';
     export default {
         name: 'CsvPage',
         props: {
@@ -44,23 +45,32 @@
                     alert('No file selected');
                     return;
                 }
-                const formData = new FormData();
-                formData.append('file', this.selectedFile);
-                try{
-                    const response = await fetch('http://localhost:3000/upload', {
-                        method: 'POST',
-                        body: formData
-                    });
-                    if(!response.ok){
-                        throw new Error('Error uploading file');
+                const file = this.selectedFile;
+                Papa.Parser(file,{
+                    header: true,
+                    complete: async (results) =>{
+                        const jsonData = results.data;
+                        console.log('Parsed JSON:',jsonData);
+                        try{
+                            const response = await fetch('http://localhost:3000/upload', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({data: jsonData})
+                            });
+                            if(!response.ok){
+                                throw new Error('Error uploading file');
+                            }
+                            const result = await response.json();
+                            alert('File uploaded successfully');
+                            console.log(result);
+                        }catch(error){
+                            console.log(error);
+                            alert('Error uploading file');
+                        }
                     }
-                    const result = await response.json();
-                    alert('File uploaded successfully');
-                    console.log(result);
-                }catch(error){
-                    console.log(error);
-                    alert('Error uploading file');
-                }
+                });
             }
         }
     }
