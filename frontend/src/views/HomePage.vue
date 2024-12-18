@@ -28,6 +28,7 @@ export default {
     flex-direction: column;
     transition: background-color 0.3s;
     height: 100vh;
+    width: 100%;
 }
 .home-page.dark-mode {
   background-color: #192229;

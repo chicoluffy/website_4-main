@@ -2,7 +2,7 @@
     <div :class="['main-Layout',{'dark-mode':isDarkMode}]">
         <NavBar :isDarkMode="isDarkMode"/>
         <div class="main-content">
-            <SidebarComponent :isDarkMode="isDarkMode"/>
+            <SidebarComponent  :isDarkMode="isDarkMode"/>
             <div class="content">
                 <router-view :isDarkMode="isDarkMode"/>
             </div>
@@ -52,10 +52,11 @@ export default {
 .main-content {
   display: flex;
   flex: 1;
+  height: 100vh;
 }
 
 .sidebar {
-  width: 200px;
+  width: 230px;
   transition: background-color 0.3s;
 }
 
