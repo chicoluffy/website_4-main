@@ -1,4 +1,4 @@
-package com.starsol.website.common.util;
+package com.starsol.website.common.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.starsol.website.common.exceptions.StarGeneralException;
+import com.starsol.website.common.utils.SerializationUtil;
 import com.starsol.website.common.web.StarBasicController;
 import com.starsol.website.models.UserLoginRequest;
 
@@ -20,8 +21,8 @@ public class HomeController extends StarBasicController {
         public ResponseEntity Login(
             @RequestHeader(value = "Content-Type", required = false, defaultValue = "application/json")  String contentType,    
             @RequestBody UserLoginRequest request )  {
-                    // System.out.println("Request: " + SerializationUtil.obj2json(request));
-                    // ResponseApi respuesta;
+                     System.out.println("Request: " + SerializationUtil.obj2json(request));
+                     //ResponseApi respuesta;
                     // try {
                     //     respuesta = event.createEvent(request);
                     //     return success(null);
