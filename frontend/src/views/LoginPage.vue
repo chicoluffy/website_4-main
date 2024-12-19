@@ -1,8 +1,12 @@
 
 <template>
   <div :class="['login-page',{'dark-mode': isDarkMode}]">
-    <SwitchBtn  :isDarkMode="isDarkMode" class="switch-btn"/>
-    <LoginForm :isDarkMode="isDarkMode"/>
+    <div class="header">
+      <SwitchBtn :is-dark-mode="isDarkMode" class="switch-btn" />
+    </div>
+    <div class="content">
+      <LoginForm class="login-form" />
+    </div>
   </div>
 </template>
 
@@ -13,6 +17,12 @@ import EventBus from '@/eventBus/eventBus';
 
 export default {
   name: 'LoginPage',
+  beforeRouteEnter(to,from,next){
+    if(from.name == 'DivisionPage'){
+      localStorage.removeItem('auth');
+    }
+    next();
+  },
   components: {
     LoginForm,
     SwitchBtn,
@@ -31,6 +41,20 @@ export default {
 </script>
 
 <style scoped>
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
   .login-page {
     display: flex;
     flex-direction: column;
