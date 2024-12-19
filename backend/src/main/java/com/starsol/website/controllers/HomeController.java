@@ -25,11 +25,11 @@ public class HomeController extends StarBasicController {
                      //ResponseApi respuesta;
                     // try {
                     //     respuesta = event.createEvent(request);
-                    //     return success(null);
+                         return success(request);
                     // } catch (StarGeneralException e) {
                     //     return error(e.getMessage());
                     // }
 
-                    return error("Error en el servicio");
+                    //return error("Error en el servicio");
         }
 }
