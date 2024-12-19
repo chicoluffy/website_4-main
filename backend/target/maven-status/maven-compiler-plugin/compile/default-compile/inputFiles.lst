@@ -1,7 +1,11 @@
 C:\source\SystemFinancial\SystemFinalcial\website_4-main\backend\src\main\java\com\starsol\website\common\enums\StarResponseEnum.java
+C:\source\SystemFinancial\SystemFinalcial\website_4-main\backend\src\main\java\com\starsol\website\jpa\repository\UserRepository.java
 C:\source\SystemFinancial\SystemFinalcial\website_4-main\backend\src\main\java\com\starsol\website\common\util\SerializationUtil.java
 C:\source\SystemFinancial\SystemFinalcial\website_4-main\backend\src\main\java\com\starsol\website\models\LoginModels.java
 C:\source\SystemFinancial\SystemFinalcial\website_4-main\backend\src\main\java\com\starsol\website\controllers\userController.java
+C:\source\SystemFinancial\SystemFinalcial\website_4-main\backend\src\main\java\com\starsol\website\common\jpa\repository\BaseRepository.java
+C:\source\SystemFinancial\SystemFinalcial\website_4-main\backend\src\main\java\com\starsol\website\config\DataBaseConfig.java
+C:\source\SystemFinancial\SystemFinalcial\website_4-main\backend\src\main\java\com\starsol\website\jpa\entity\User.java
 C:\source\SystemFinancial\SystemFinalcial\website_4-main\backend\src\main\java\com\starsol\website\common\web\StarBasicController.java
 C:\source\SystemFinancial\SystemFinalcial\website_4-main\backend\src\main\java\com\starsol\website\service\HomeServices.java
 C:\source\SystemFinancial\SystemFinalcial\website_4-main\backend\src\main\java\com\starsol\website\common\exceptions\StarNotFoundException.java
