@@ -13,7 +13,7 @@ public class LoginModels implements Serializable{
     private String username;
     @JsonProperty("password")
     private String password;
-    @JsonProperty("token")
+    @JsonProperty("appkey")
     private String token;
 
 }
