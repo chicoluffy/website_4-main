@@ -57,6 +57,7 @@
 			<version>${spring.boot.version}</version> <!-- Updated to a version without known vulnerabilities -->
 		</dependency>
 
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

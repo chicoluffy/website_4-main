@@ -1,8 +1,18 @@
 package com.starsol.website.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+
+import com.starsol.website.jpa.entity.User;
+import com.starsol.website.jpa.entity.UserPrivilege;
+import com.starsol.website.jpa.entity.UserPrivilegeId;
+import com.starsol.website.jpa.repository.UserPrivilegeRepository;
+import com.starsol.website.jpa.repository.UserRepository;
 
 @Service
 public class UserServices {
@@ -26,11 +36,17 @@ public class UserServices {
     }
 
     // por ahora voy a quemar el user y password y token
-    public boolean validateUser(String username, String password, String token) {
-        if (username.equals("admin") && password.equals("admin") && token.equals("123456")) {
-            return true;
-        }
-        return false;
+    @Autowired
+    private UserPrivilegeRepository userPrivilegeRepository;
 
+    public List<UserPrivilege> getUserPrivileges(Integer userId)
+    {
+        List<UserPrivilege> privileges = userPrivilegeRepository.findByUserId(userId);
+        if (privileges != null) 
+        {
+            return privileges;
+        } 
+        return new ArrayList<>();
+            
     }
 }
