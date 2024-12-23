@@ -35,7 +35,7 @@ public class UserServices {
     }
 
     // por ahora voy a quemar el user y password y token
-    
+    //asdas
     public List<UserPrivilege> getUserPrivilegeIds(Integer userId) 
     {
         return userPrivilegeRepository.findPrivilegeIdsByUserId(userId);    
