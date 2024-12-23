@@ -1,5 +1,4 @@
 package com.starsol.website.jpa.entity;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
@@ -44,4 +43,85 @@ public class UserPrivilege {
     private User changedByUser;
 
     public UserPrivilege(){}
+
+    // Getters and Setters
+    public UserPrivilegeId getId() {
+        return id;
+    }
+
+    public void setId(UserPrivilegeId id) {
+        this.id = id;
+    }
+
+    public Integer getCreatedByUserId() {
+        return createdByUserId;
+    }
+
+    public void setCreatedByUserId(Integer createdByUserId) {
+        this.createdByUserId = createdByUserId;
+    }
+
+    public Integer getChangedByUserId() {
+        return changedByUserId;
+    }
+
+    public void setChangedByUserId(Integer changedByUserId) {
+        this.changedByUserId = changedByUserId;
+    }
+
+    public Integer getChangedOnBehalfUserId() {
+        return changedOnBehalfUserId;
+    }
+
+    public void setChangedOnBehalfUserId(Integer changedOnBehalfUserId) {
+        this.changedOnBehalfUserId = changedOnBehalfUserId;
+    }
+
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public LocalDateTime getChangedDate() {
+        return changedDate;
+    }
+
+    public void setChangedDate(LocalDateTime changedDate) {
+        this.changedDate = changedDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Privilege getPrivilege() {
+        return privilege;
+    }
+
+    public void setPrivilege(Privilege privilege) {
+        this.privilege = privilege;
+    }
+
+    public User getCreatedByUser() {
+        return createdByUser;
+    }
+
+    public void setCreatedByUser(User createdByUser) {
+        this.createdByUser = createdByUser;
+    }
+
+    public User getChangedByUser() {
+        return changedByUser;
+    }
+
+    public void setChangedByUser(User changedByUser) {
+        this.changedByUser = changedByUser;
+    }
 }
