@@ -36,7 +36,19 @@
         <spring.boot.version>3.4.0</spring.boot.version> <!--  última versión de Spring Boot es la 3.4.0, a fecha de noviembre de 2024. -->
 	</properties>
 	<dependencies>
-        
+        <!-- logs -->
+       
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.9</version> <!-- Versión compatible -->
+        </dependency>
+
+
         <!-- Dependencia del driver de PostgreSQL -->
         <dependency>
             <groupId>org.postgresql</groupId>
