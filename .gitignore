@@ -8,7 +8,7 @@ Thumbs.db
 *.iml
 
 # Ignorar archivos y carpetas generados por Maven
-/target/
+backend/target/
 
 # Ignorar archivos y carpetas generados por Gradle
 /.gradle/
