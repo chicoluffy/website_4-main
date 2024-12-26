@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class userController {
     @Autowired
     private UserServices userServices;
-    //@PostMapping("/validate")
-    /*public boolean postMethodName(@RequestBody LoginModels users) {
-        return userServices.validateUser(users.getUsername(), users.getPassword(), users.getToken());
-    }*/
+    @PostMapping("/validate")
+    public boolean postMethodName(@RequestBody LoginModels users) {
+        return true; //userServices.validateUser(users.getUsername(), users.getPassword(), users.getToken());
+    }
     
 }

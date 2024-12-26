@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 /**
  * Represents a privilege entity in the system.
@@ -48,6 +49,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "ss_privilege", schema = "bbone")
+@Data
 public class Privilege {
     @Id
     @Column(name = "privilege_id", nullable = false, length = 256)
@@ -78,9 +80,5 @@ public class Privilege {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "changed_by_user_id", referencedColumnName = "user_id", insertable = false, updatable = false)
     private User changedByUser;
-
-    public Privilege() {}
-
-    
     
 }
