@@ -37,37 +37,71 @@
         data(){
             return {
                 username: '',
-                password: ''
+                password: '',
+                inactivityTimer : null,
             };
         },
         methods : {
-          submitForm() {
-      if (this.username === 'admin' && this.password === 'admin') {
-        localStorage.setItem('auth', 'true');
-        this.$router.push('/division');
-      } else {
-        alert('Invalid credentials');
-      }
-    }
-          
-            /*async submitForm(){
-                try{
-                    const apiUrl = process.env.VUE_APP_API_URL;
-                    const  response = await axios.post(`${apiUrl}/validate`, {
-                        username: this.username,
-                        password: this.password,
-                        token: '123456',
-                        method: 'POST',});
-                    if(!response.data){
-                      alert('Invalid credentials');
-                    }
-                    localStorage.setItem('auth', 'true');
-                    this.$router.push('/home');
-                }catch(error){
-                    console.error(error);
-                    alert('An error occurred', error);
+          async submitForm(){
+              try{
+                  const apiUrl = process.env.VUE_APP_API_URL;
+                  const  response = await axios.post(`${apiUrl}/login/home`, {
+                      username: this.username,
+                      password: this.password,
+                      method: 'POST',});
+                      if(response.date && response.date.token)
+                      {
+                          const token = response.date.token;
+                          localStorage.setItem('token', token);
+                          //configuramos un temporizados de inactividad
+                          this.resetInactivityTimer();
+                          this.$router.push('/home');
+                      }else
+                      {
+                          alert('Invalid credentials');
+                      }
+              }catch(error){
+                console.error('Error during API call:', error);
+                alert('An error occurred while trying to log in.');
+              }
+            },
+            resetInactivityTimer()
+            {
+                if(this.inactivityTimer)
+                {
+                    clearTimeout(this.inactivityTimer);
                 }
-            }*/
+                this.inactivityTimer = setTimeout(() => {
+                    localStorage.removeItem('token');
+                    alert('Session expired due to inactivity. Please log in again.');
+                    this.$router.push('/login');
+                }, 1000 * 60 * 5);
+            },
+            handleUserActivity()
+            {
+                this.resetInactivityTimer();
+            }
+        },
+        mounted()
+        {
+            const token = localStorage.getItem('token');
+            if(token)
+            {
+                this.resetInactivityTimer();
+                window.addEventListener('mousemove', this.handleUserActivity);
+                window.addEventListener('keypress', this.handleUserActivity);
+                window.addEventListener('click', this.handleUserActivity);
+            }
+        },
+        beforeDestroy()
+        {
+            window.removeEventListener('mousemove', this.handleUserActivity);
+            window.removeEventListener('keypress', this.handleUserActivity);
+            window.removeEventListener('click', this.handleUserActivity);
+            if(this.inactivityTimer)
+            {
+                clearTimeout(this.inactivityTimer);
+            }
         }
     };
 </script>
