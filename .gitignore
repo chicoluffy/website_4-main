@@ -9,6 +9,7 @@ Thumbs.db
 
 # Ignorar archivos y carpetas generados por Maven
 backend/target/
+backend/target/
 
 # Ignorar archivos y carpetas generados por Gradle
 /.gradle/
