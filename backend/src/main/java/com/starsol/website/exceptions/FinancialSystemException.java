@@ -10,6 +10,7 @@ public class FinancialSystemException extends StarGeneralException{
     
     public enum CODES {
          // ----------------- COMMON ---------------------//
+         INTERNAL_SERVER_ERROR                      ("SF_COMMON", 500, "Error while calling login stored procedure"),
          INVALID_USER_ID                            ("SF_ALERT", 1000, "Invalid User ID"),
          ALERT_OBJECT_MISSING                       ("SF_ALERT", 1001, "Alert object missing"),
          ALERT_MAP_MISSING                          ("SF_ALERT", 1002, "Alert map missing"),

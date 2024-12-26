@@ -1,4 +1,4 @@
-package com.starsol.website.models;
+package com.starsol.website.models.request;
 
 import java.io.Serializable;
 

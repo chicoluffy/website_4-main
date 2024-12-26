@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.starsol.website.jpa.entity.UserPrivilege;
+import com.starsol.website.models.Privilege;
 import com.starsol.website.jpa.repository.UserPrivilegeRepository;
 
 @Service
@@ -35,8 +36,28 @@ public class UserServices {
     }
 
     // por ahora voy a quemar el user y password y token
-    public List<UserPrivilege> getUserPrivilegeIds(Integer userId) 
+    public List<Privilege> getUserPrivilegeIds(Integer userId) throws Exception
     {
-        return userPrivilegeRepository.findPrivilegeIdsByUserId(userId);    
+        List<Privilege> privileges = new ArrayList<>();
+        List<UserPrivilege> userpri = userPrivilegeRepository.findPrivilegeIdsByUserId(userId);
+
+        for (UserPrivilege userPrivilege : userpri) {
+            // Supongamos que tienes un método para convertir UserPrivilege a Privilege
+            Privilege privilege = convertToPrivilege(userPrivilege);
+            privileges.add(privilege);
+        }
+        
+        return privileges;
+    }
+
+
+    
+    // Método de ejemplo para transformar UserPrivilege a Privilege
+    private Privilege convertToPrivilege(UserPrivilege userPrivilege) {
+        Privilege privilege = new Privilege();
+        privilege.setPrivilegeId(userPrivilege.getId().getPrivilegeId()); 
+        privilege.setPrivilegeTypeId(userPrivilege.getPrivilege().getPrivilegeTypeId());
+        privilege.setDescription(userPrivilege.getPrivilege().getDescription()); // Ajusta según tus atributos
+        return privilege;
     }
 }

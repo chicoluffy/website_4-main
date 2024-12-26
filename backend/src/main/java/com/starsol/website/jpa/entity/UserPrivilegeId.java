@@ -3,30 +3,18 @@ package com.starsol.website.jpa.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.Data;
 
 @Embeddable
+@Data
 public class UserPrivilegeId implements Serializable {
+    @Column(name = "user_id")
     private Integer userId;
-    private String privilegeId;
 
-    public UserPrivilegeId() {}
-    public UserPrivilegeId(Integer userId, String privilegeId) {
-        this.userId = userId;
-        this.privilegeId = privilegeId;
-    }
-    public Integer getUserId() {
-        return userId;
-    }
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-    public String getPrivilegeId() {
-        return privilegeId;
-    }
-    public void setPrivilegeId(String privilegeId) {
-        this.privilegeId = privilegeId;
-    }
+    @Column(name = "privilege_id")
+    private String privilegeId;
 
     @Override
     public boolean equals(Object obj) {

@@ -1,102 +1,63 @@
 package com.starsol.website.service.user_manager;
 
+import java.sql.CallableStatement;
+import java.util.Arrays;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.Types;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.starsol.website.common.exceptions.StarGeneralException;
 import com.starsol.website.exceptions.FinancialSystemException;
 import com.starsol.website.exceptions.FinancialSystemException.CODES;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
 public class UserManagerServices {
 
-    public static boolean checkUserPassword(String username, String password) throws FinancialSystemException {
-        if (username == null || username.isEmpty()) {
-            throw new FinancialSystemException(CODES.USERNAME_EMPTY);
-        }
+    @Autowired
+    private DataSource dataSource;
 
-        if (password == null || password.isEmpty()) {
-            throw new FinancialSystemException(CODES.PASSWORD_EMPTY);
-        }
+    public int authentication_check(String username, String password) {
+        try (Connection connection = dataSource.getConnection();
+             CallableStatement cs = connection.prepareCall("{? = call bbone.starsol_auth_authentication_check(?, ?)}")) {
 
-        int user_id = 0;//StarsolSession.checkUserPassword(username, password);
-        if (user_id <= 0) {
-            throw new FinancialSystemException(CODES.WRONG_USERNAME_PASSWORD);
-        }
+            // Registrar el valor de retorno
+            cs.registerOutParameter(1, Types.INTEGER);
 
-        return true;
+            // Establecer los parámetros de entrada
+            cs.setString(2, username);
+            cs.setString(3, password);
+
+            // Ejecutar la función
+            cs.execute();
+
+            // Devolver el valor retornado
+            return cs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error ejecutando la función almacenada", e);
+        }
     }
 
-    // public static int authenticateUser(String pUsername, String pPassword) throws PanicException {
-    //     int user_id = 0;
-    //     DataSource ds;
-    //     Connection conn = null;
-    //     CallableStatement ps = null;
-    //     ResultSet rs = null;
+     public int authenticateUser(String pUsername, String pPassword) throws FinancialSystemException {
+        int user_id = 0;
+        
+            user_id = authentication_check(pUsername, pPassword);       
 
-    //     if (pUsername == null || pUsername.isEmpty()) {
-    //         return 0;
-    //     }
+        if (user_id <= 0) {
+            return 0;
+        }
 
-    //     if (pPassword == null || pPassword.isEmpty()) {
-    //         return 0;
-    //     }
-
-    //     try {
-    //         // get the datasource
-    //         ds = StarsolDatasourceImplementation.getDatasource();
-    //     } catch (Exception e) {
-    //         StarsolLog.logPanic(Level.SEVERE, "can't obtain datasource " + e.getMessage() + " " + Arrays.toString(e.getStackTrace()));
-    //         throw new PanicException("Can't obtain the datasource", 90);
-    //     }
-
-    //     try {
-    //         conn = ds.getConnection();
-    //     } catch (Exception e) {
-    //         StarsolLog.logPanic(Level.SEVERE, "can't obtain connection " + e.getMessage() + " " + Arrays.toString(e.getStackTrace()));
-    //         throw new PanicException("Can't obtain the datasource", 91);
-    //     }
-    //     try {
-    //         ps = conn.prepareCall("{call bbone.starsol_auth_authentication_check(?, ?)}");
-    //         ps.setString(1, pUsername);
-    //         ps.setString(2, pPassword);
-    //         rs = ps.executeQuery();
-    //         rs.next();
-
-    //         user_id = rs.getInt(1);
-
-    //         rs.close();
-    //         ps.close();
-    //         conn.close();
-
-    //     } catch (Exception ex) {
-    //         StarsolLog.logDB(Level.WARNING, "Exception in prepare call and execute query " + ex.getMessage() + " " + Arrays.toString(ex.getStackTrace()));
-    //         return 0;
-    //     } finally {
-    //         if (rs != null) {
-    //             try {
-    //                 rs.close();
-    //             } catch (Exception ex) {
-    //                 StarsolLog.logDB(Level.WARNING, "can't close recordset " + ex.getMessage() + " " + Arrays.toString(ex.getStackTrace()));
-    //             }
-    //         }
-    //         if (ps != null) {
-    //             try {
-    //                 ps.close();
-    //             } catch (Exception ex) {
-    //                 StarsolLog.logDB(Level.WARNING, "can't close prepared statement " + ex.getMessage() + " " + Arrays.toString(ex.getStackTrace()));
-    //             }
-    //         }
-    //         if (conn != null) {
-    //             try {
-    //                 conn.close();
-    //             } catch (Exception ex) {
-    //                 StarsolLog.logDB(Level.WARNING, "can't close connection " + ex.getMessage() + " " + Arrays.toString(ex.getStackTrace()));
-    //             }
-    //         }
-    //     }
-
-    //     if (user_id <= 0) {
-    //         return 0;
-    //     }
-
-    //     return user_id;
-    // }
+        return user_id;
+    }
 
     // public static TEntity validateApplication(String appKey) throws PanicException, BusinessLogicException {
     //     // Performs the call to the db
