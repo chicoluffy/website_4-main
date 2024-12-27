@@ -2,6 +2,7 @@ package com.starsol.website.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -21,7 +22,7 @@ public class HomeController extends StarBasicController {
 
     @Autowired
     private HomeServices homeService;
-    
+    @CrossOrigin(origins = "http://192.168.0.12:8081")
     @SuppressWarnings("rawtypes")
         @PostMapping("/Login")
         public ResponseEntity Login(

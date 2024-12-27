@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-  //import axios from 'axios';
+  import axios from 'axios';
     export default {
         name: 'LoginForm',
         props: {
@@ -45,17 +45,20 @@
           async submitForm(){
               try{
                   const apiUrl = process.env.VUE_APP_API_URL;
-                  const  response = await axios.post(`${apiUrl}/login/home`, {
+                  const  response = await axios.post(`${apiUrl}/Login`, {
                       username: this.username,
                       password: this.password,
+                      appkey: "",
                       method: 'POST',});
-                      if(response.date && response.date.token)
+                      if(response.data && response.data.data.token && response.data.data)
                       {
-                          const token = response.date.token;
+                          const token = response.data.data.token;
                           localStorage.setItem('token', token);
+                          localStorage.setItem('auth',true);
                           //configuramos un temporizados de inactividad
                           this.resetInactivityTimer();
-                          this.$router.push('/home');
+                          console.log('Login successful');
+                          this.$router.push('/Division');
                       }else
                       {
                           alert('Invalid credentials');
@@ -93,7 +96,7 @@
                 window.addEventListener('click', this.handleUserActivity);
             }
         },
-        beforeDestroy()
+        beforeMount()
         {
             window.removeEventListener('mousemove', this.handleUserActivity);
             window.removeEventListener('keypress', this.handleUserActivity);
