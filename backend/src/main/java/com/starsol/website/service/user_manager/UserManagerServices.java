@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import com.starsol.website.common.exceptions.StarGeneralException;
 import com.starsol.website.exceptions.FinancialSystemException;
 import com.starsol.website.exceptions.FinancialSystemException.CODES;
+import com.starsol.website.service.RedisServices;
+import com.starsol.website.common.utils.SessionGenerator;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,6 +26,13 @@ public class UserManagerServices {
 
     @Autowired
     private DataSource dataSource;
+
+    @Autowired
+    private RedisServices redisServices;
+
+    private final String user_keyspace = "USER_SESSION";
+    private final String session_tokens_keyspace = "USER_SESSION_TOKENS";
+    private final int session_expires_seconds = 6000;
 
     public int authentication_check(String username, String password) {
         try (Connection connection = dataSource.getConnection();
@@ -47,7 +56,7 @@ public class UserManagerServices {
         }
     }
 
-     public int authenticateUser(String pUsername, String pPassword) throws FinancialSystemException {
+     public int authenticateUser(String pUsername, String pPassword) throws FinancialSystemException, Exception {
         int user_id = 0;
         
             user_id = authentication_check(pUsername, pPassword);       
@@ -80,57 +89,97 @@ public class UserManagerServices {
     //     return app_data;
     // }
 
-    // public static String CreateSession(String pUsername, String pPassword) throws FinancialSystemException
-    // {
-    //     String sessionToken;
+    public String CreateSession(String pUsername, String pPassword) throws FinancialSystemException, Exception
+    {
+        String sessionToken;
 
-    //     sessionToken = authenticate(pUsername, pPassword);
+        sessionToken = authenticate(pUsername, pPassword);
 
-    //     if (sessionToken == null || sessionToken.isEmpty())
-    //     {
-    //         throw new AuthenticationException();
-    //     }
+        if (sessionToken == null || sessionToken.isEmpty())
+        {
+            throw new Exception("Error creating session");
+        }
 
-    //     return sessionToken;
-    // }
+        return sessionToken;
+    }
 
-    //  /**
-    //  * Checks if there's a session related to 'pUsername'.
-    //  *
-    //  * @param pUsername Username.
-    //  * @return User session token if it exists, empty string in other case.
-    //  * @throws PanicException
-    //  *
-    //  */
-    // public static String checkIfUserSessionExists(String pUsername) throws FinancialSystemException
-    // {
-    //     String session_tokens_keyspace;
-    //     String user_keyspace;
+    private  String authenticate(String pUsername, String pPassword) throws FinancialSystemException, Exception
+    {
 
-    //     user_keyspace = StarsolRuntimeConfig.getConfig("starsol.session.user.sessions.keyspace");
-    //     session_tokens_keyspace = StarsolRuntimeConfig.getConfig("starsol.session.user.session_tokens.keyspace");
+        String retToken;
+        Integer user_id;
 
-    //     // first check to see if user alredy has an active session
-    //     String userSession = StarsolCache.getKeyString(user_keyspace, pUsername);
+        // first check if user has an active session already
+        retToken = checkIfUserSessionExists(pUsername);
 
-    //     // entry in user session exits so check now to see if entry in session tokens exists
-    //     if (userSession != null)
-    //     {
-    //         if (userSession.length() > 0)
-    //         {
-    //             String sessionToken = StarsolCache.getKeyString(session_tokens_keyspace, userSession);
-    //             if (sessionToken != null)
-    //             {
-    //                 if (sessionToken.length() > 0)
-    //                 {
-    //                     refreshUserSession(userSession);
-    //                     return userSession;
-    //                 }
-    //             }
-    //         }
-    //     }
+        if (!(retToken != null && !retToken.isEmpty()))
+        {
+            user_id = authenticateUser(pUsername, pPassword);
+            // user not identified
+            if (user_id == 0)
+            {
+                throw new Exception("User not identified");
+            }
 
-    //     return "";
-    // }
+            // create session token
+            retToken = user_id + "//" + new SessionGenerator().nextSessionId();
+
+            addUserSession(retToken, pUsername);
+        }
+
+        return retToken;
+    }
+
+     /**
+     * Checks if there's a session related to 'pUsername'.
+     *
+     * @param pUsername Username.
+     * @return User session token if it exists, empty string in other case.
+     * @throws PanicException
+     *
+     */
+    public String checkIfUserSessionExists(String pUsername) throws FinancialSystemException, Exception
+    {
+        
+
+        // first check to see if user alredy has an active session
+        String userSession = redisServices.getKeyString(user_keyspace, pUsername);
+
+        // entry in user session exits so check now to see if entry in session tokens exists
+        if (userSession != null)
+        {
+            if (userSession.length() > 0)
+            {
+                String sessionToken = redisServices.getKeyString(session_tokens_keyspace, userSession);
+                if (sessionToken != null)
+                {
+                    if (sessionToken.length() > 0)
+                    {
+                        refreshUserSession(userSession);
+                        return userSession;
+                    }
+                }
+            }
+        }
+
+        return "";
+    }
+
+    public void refreshUserSession(String pToken) throws Exception
+    {
+       
+       redisServices.setValueWithExpiration(session_tokens_keyspace, pToken, session_expires_seconds);
+       String pUsername = redisServices.getKeyString(session_tokens_keyspace, pToken);
+       redisServices.setValueWithExpiration(user_keyspace, pUsername, session_expires_seconds);
+ 
+    }
+
+    public void addUserSession(String pSessionToken, String pUsername) throws Exception
+    {
+        redisServices.set(session_tokens_keyspace, pSessionToken, pUsername, session_expires_seconds);
+        redisServices.set(user_keyspace, pUsername, pSessionToken, session_expires_seconds);
+       
+    }
+    
     
 }

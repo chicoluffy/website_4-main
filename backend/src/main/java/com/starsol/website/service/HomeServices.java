@@ -34,13 +34,13 @@ public UserLoginResponse login(UserLoginRequest request) throws FinancialSystemE
 
     // user validate
     response.setUserId( this.checkUserPassword(username, password) );
-    response.setToken("1edfsr2134asdadss");
+    response.setToken(this.CreateSession(username, password));
     response.setPrivilege(this.getPrivilege(response.getUserId()));
        
     return response;
 }
 
-public int checkUserPassword(String username, String password) throws FinancialSystemException {
+public int checkUserPassword(String username, String password) throws FinancialSystemException, Exception {
     if (username == null || username.isEmpty()) {
         throw new FinancialSystemException(CODES.USERNAME_EMPTY);
     }
@@ -59,6 +59,10 @@ public int checkUserPassword(String username, String password) throws FinancialS
 
 public List<Privilege> getPrivilege(int user_id) throws Exception {
     return userServices.getUserPrivilegeIds(user_id);
+}
+
+public String CreateSession(String username, String password) throws FinancialSystemException, Exception {
+    return userManagerServices.CreateSession(username, password);
 }
 
 }
