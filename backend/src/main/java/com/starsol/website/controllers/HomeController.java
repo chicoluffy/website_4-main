@@ -25,7 +25,6 @@ public class HomeController extends StarBasicController {
     @CrossOrigin(origins = "http://192.168.0.12:8081")
     @SuppressWarnings("rawtypes")
         @PostMapping("/Login")
-        @CrossOrigin(origins = "http://localhost:8081")
         public ResponseEntity Login(
             @RequestHeader(value = "Content-Type", required = false, defaultValue = "application/json")  String contentType,    
             @RequestBody UserLoginRequest request )  {

@@ -11,13 +11,16 @@
             placeholder="User" 
             class="login-input" 
           />
-          <input 
-            type="password" 
+            <input 
+            :type="passwordVisible ? 'text' : 'password'"  
             id="password" 
             v-model="password" 
             placeholder="Password" 
             class="login-input" 
-          />
+            />
+            <button type="button" @click="togglePasswordVisibility" class="password-toggle-button">
+              <i class="fas" :class="{ 'fa-eye-slash': passwordVisible, 'fa-eye': !passwordVisible }"></i>
+            </button>
         </div>
         <button type="submit">Login</button>
       </form>
@@ -38,10 +41,13 @@
             return {
                 username: '',
                 password: '',
-                inactivityTimer : null,
+                passwordVisible: false
             };
         },
         methods : {
+          togglePasswordVisibility() {
+            this.passwordVisible = !this.passwordVisible;
+          },
           async submitForm(){
               try{
                   const apiUrl = process.env.VUE_APP_API_URL;
@@ -53,11 +59,14 @@
                       if(response.data && response.data.data.token && response.data.data)
                       {
                           const token = response.data.data.token;
+                          const privileges = response.data.data.privilege.map(p => p.privilege_id);
+                          if(privileges.length === 0){
+                              alert('You have no power here');
+                              return;
+                          }
                           localStorage.setItem('token', token);
-                          localStorage.setItem('auth',true);
+                          localStorage.setItem('privileges', JSON.stringify(privileges));
                           //configuramos un temporizados de inactividad
-                          this.resetInactivityTimer();
-                          console.log('Login successful');
                           this.$router.push('/Division');
                       }else
                       {
@@ -67,45 +76,8 @@
                 console.error('Error during API call:', error);
                 alert('An error occurred while trying to log in.');
               }
-            },
-            resetInactivityTimer()
-            {
-                if(this.inactivityTimer)
-                {
-                    clearTimeout(this.inactivityTimer);
-                }
-                this.inactivityTimer = setTimeout(() => {
-                    localStorage.removeItem('token');
-                    alert('Session expired due to inactivity. Please log in again.');
-                    this.$router.push('/login');
-                }, 1000 * 60 * 5);
-            },
-            handleUserActivity()
-            {
-                this.resetInactivityTimer();
             }
         },
-        mounted()
-        {
-            const token = localStorage.getItem('token');
-            if(token)
-            {
-                this.resetInactivityTimer();
-                window.addEventListener('mousemove', this.handleUserActivity);
-                window.addEventListener('keypress', this.handleUserActivity);
-                window.addEventListener('click', this.handleUserActivity);
-            }
-        },
-        beforeMount()
-        {
-            window.removeEventListener('mousemove', this.handleUserActivity);
-            window.removeEventListener('keypress', this.handleUserActivity);
-            window.removeEventListener('click', this.handleUserActivity);
-            if(this.inactivityTimer)
-            {
-                clearTimeout(this.inactivityTimer);
-            }
-        }
     };
 </script>
 <style>
