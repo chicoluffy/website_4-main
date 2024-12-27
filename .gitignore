@@ -40,3 +40,4 @@ backend/target/
 
 # Ignorar archivos de configuración de entorno
 .env
+/frontend/.env

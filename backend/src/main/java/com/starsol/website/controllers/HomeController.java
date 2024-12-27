@@ -22,7 +22,7 @@ public class HomeController extends StarBasicController {
 
     @Autowired
     private HomeServices homeService;
-    
+    @CrossOrigin(origins = "http://192.168.0.12:8081")
     @SuppressWarnings("rawtypes")
         @PostMapping("/Login")
         @CrossOrigin(origins = "http://localhost:8081")
