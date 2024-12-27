@@ -2,6 +2,11 @@
     <div :class= "['home-page',{'dark-mode':isDarkMode}]">
       <div class="content">
         <h1>Welcome, {{ userName }}</h1>
+        <ul>
+          <li v-for="privilege in privileges" :key="privilege">
+            {{ privilege }}
+          </li>
+        </ul>
       </div>
     </div>
 </template>
@@ -18,8 +23,15 @@ export default {
   data() {
     return {
       userName: 'Admin',
+      privileges: []
     };
   },
+  mounted(){
+    const privileges = localStorage.getItem('privileges');
+    if(privileges){
+      this.privileges = JSON.parse(privileges);
+    }
+  }
 };
 </script>
 <style scoped>
