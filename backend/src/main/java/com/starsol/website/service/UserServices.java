@@ -13,27 +13,9 @@ import com.starsol.website.jpa.repository.UserPrivilegeRepository;
 
 @Service
 public class UserServices {
-    //interaccion con redisConfig
-    @Autowired
-    private RedisTemplate<String,Object> redisTemplate;
 
     @Autowired
     private UserPrivilegeRepository userPrivilegeRepository;
-
-    public void saveToken(String key, String token)
-    {
-        redisTemplate.opsForValue().set(key, token);
-    }
-
-    public String getToken(String key)
-    {
-        return (String) redisTemplate.opsForValue().get(key);
-    }
-
-    public void deleteToken(String key)
-    {
-        redisTemplate.delete(key);
-    }
 
     // por ahora voy a quemar el user y password y token
     public List<Privilege> getUserPrivilegeIds(Integer userId) throws Exception
