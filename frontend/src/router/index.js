@@ -8,6 +8,8 @@ import CsvPage from '@/views/CsvPage.vue';
 import SingleDeposit from '@/views/SingleDeposit.vue';
 import RollBasePage from '@/views/RollBasePage.vue';
 import DepWithPage from '@/views/DepWithPage.vue';
+import WithdrawPage from '@/views/WithdrawPage.vue';
+import AutomaticDepositPage from '@/views/AutomaticDepositPage.vue';
 
 const routes = [
   { path: '/', name: 'LoginPage', component: LoginPage },
@@ -21,7 +23,9 @@ const routes = [
         {path: 'csv', name: 'CsvPage', component: CsvPage},
         {path: 'singleDeposit', name: 'SingleDeposit', component: SingleDeposit},
         {path: 'rollPage', name: 'RollBasePage', component: RollBasePage},
-        {path: 'DepWithPage', name: 'DepWithPage', component: DepWithPage}
+        {path: 'DepWithPage', name: 'DepWithPage', component: DepWithPage},
+        {path: 'WithdrawPage', name: 'WithdrawPage', component: WithdrawPage},
+        {path: 'AutomaticDepositPage',name: 'AutomaticDepositPage', component: AutomaticDepositPage}
     ],
     meta: { requiresAuth: true }
   }

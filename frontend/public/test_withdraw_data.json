@@ -1,0 +1,902 @@
+[
+    {
+        "user_id": "User14",
+        "fecha": "2021-01-16",
+        "monto": 906,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User17",
+        "fecha": "2021-02-02",
+        "monto": 1078,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User18",
+        "fecha": "2021-07-18",
+        "monto": 3904,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User43",
+        "fecha": "2021-02-21",
+        "monto": 1963,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User2",
+        "fecha": "2021-12-17",
+        "monto": 2607,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User45",
+        "fecha": "2021-08-12",
+        "monto": 2945,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User41",
+        "fecha": "2021-10-19",
+        "monto": 1920,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User27",
+        "fecha": "2021-12-30",
+        "monto": 2735,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User12",
+        "fecha": "2021-04-05",
+        "monto": 4145,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User2",
+        "fecha": "2021-06-01",
+        "monto": 1281,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User13",
+        "fecha": "2021-04-20",
+        "monto": 2180,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User38",
+        "fecha": "2021-10-12",
+        "monto": 3583,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User45",
+        "fecha": "2021-02-03",
+        "monto": 1841,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User14",
+        "fecha": "2021-08-28",
+        "monto": 963,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User24",
+        "fecha": "2021-05-16",
+        "monto": 3746,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User23",
+        "fecha": "2021-06-24",
+        "monto": 853,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User43",
+        "fecha": "2021-10-11",
+        "monto": 1471,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User22",
+        "fecha": "2021-04-25",
+        "monto": 2120,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User28",
+        "fecha": "2021-01-03",
+        "monto": 2042,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User20",
+        "fecha": "2021-09-29",
+        "monto": 2592,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User40",
+        "fecha": "2021-07-09",
+        "monto": 1744,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User40",
+        "fecha": "2021-07-09",
+        "monto": 1147,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User11",
+        "fecha": "2021-11-23",
+        "monto": 2407,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User3",
+        "fecha": "2021-10-23",
+        "monto": 2206,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User19",
+        "fecha": "2021-07-18",
+        "monto": 2652,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User46",
+        "fecha": "2021-01-16",
+        "monto": 4631,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User14",
+        "fecha": "2021-01-25",
+        "monto": 3241,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User24",
+        "fecha": "2021-07-05",
+        "monto": 2417,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User4",
+        "fecha": "2021-12-14",
+        "monto": 1911,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User35",
+        "fecha": "2021-07-03",
+        "monto": 4604,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User3",
+        "fecha": "2021-01-13",
+        "monto": 3824,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User33",
+        "fecha": "2021-08-11",
+        "monto": 4468,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User19",
+        "fecha": "2021-07-26",
+        "monto": 2701,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User36",
+        "fecha": "2021-11-06",
+        "monto": 1101,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User10",
+        "fecha": "2021-12-03",
+        "monto": 2125,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User34",
+        "fecha": "2021-01-15",
+        "monto": 498,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User18",
+        "fecha": "2021-04-22",
+        "monto": 4455,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User30",
+        "fecha": "2021-03-27",
+        "monto": 380,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User45",
+        "fecha": "2021-05-22",
+        "monto": 2361,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User7",
+        "fecha": "2021-03-29",
+        "monto": 4091,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User38",
+        "fecha": "2021-11-11",
+        "monto": 4691,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User39",
+        "fecha": "2021-02-02",
+        "monto": 1575,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User41",
+        "fecha": "2022-01-01",
+        "monto": 4059,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User42",
+        "fecha": "2021-08-26",
+        "monto": 1216,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User8",
+        "fecha": "2021-09-24",
+        "monto": 284,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User35",
+        "fecha": "2021-11-06",
+        "monto": 3130,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User48",
+        "fecha": "2021-01-15",
+        "monto": 2420,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User8",
+        "fecha": "2021-04-06",
+        "monto": 2170,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User35",
+        "fecha": "2021-11-01",
+        "monto": 4920,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User47",
+        "fecha": "2021-05-13",
+        "monto": 3824,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User19",
+        "fecha": "2021-06-04",
+        "monto": 1111,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User22",
+        "fecha": "2021-04-07",
+        "monto": 2342,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User5",
+        "fecha": "2021-05-19",
+        "monto": 893,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User37",
+        "fecha": "2021-09-02",
+        "monto": 441,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User27",
+        "fecha": "2021-01-08",
+        "monto": 1006,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User49",
+        "fecha": "2021-03-16",
+        "monto": 2887,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User50",
+        "fecha": "2021-05-09",
+        "monto": 4986,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User9",
+        "fecha": "2021-08-03",
+        "monto": 2173,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User13",
+        "fecha": "2021-01-20",
+        "monto": 4490,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User33",
+        "fecha": "2021-08-13",
+        "monto": 2965,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User23",
+        "fecha": "2021-07-29",
+        "monto": 2472,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User21",
+        "fecha": "2021-11-26",
+        "monto": 2253,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User23",
+        "fecha": "2021-10-10",
+        "monto": 2242,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User14",
+        "fecha": "2021-05-29",
+        "monto": 3254,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User24",
+        "fecha": "2021-04-20",
+        "monto": 1256,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User6",
+        "fecha": "2021-12-12",
+        "monto": 3351,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User23",
+        "fecha": "2021-11-23",
+        "monto": 1683,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User41",
+        "fecha": "2021-09-02",
+        "monto": 2037,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User34",
+        "fecha": "2021-03-27",
+        "monto": 2388,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User45",
+        "fecha": "2021-04-18",
+        "monto": 4602,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User44",
+        "fecha": "2021-09-24",
+        "monto": 1628,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User39",
+        "fecha": "2021-03-18",
+        "monto": 197,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User9",
+        "fecha": "2021-01-10",
+        "monto": 1478,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User4",
+        "fecha": "2021-02-15",
+        "monto": 2148,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User2",
+        "fecha": "2021-09-14",
+        "monto": 2992,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User13",
+        "fecha": "2021-01-18",
+        "monto": 4622,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User46",
+        "fecha": "2021-10-08",
+        "monto": 2945,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User45",
+        "fecha": "2021-11-12",
+        "monto": 1274,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User12",
+        "fecha": "2021-01-24",
+        "monto": 2474,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User15",
+        "fecha": "2021-06-25",
+        "monto": 222,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User43",
+        "fecha": "2021-04-14",
+        "monto": 535,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User25",
+        "fecha": "2021-06-23",
+        "monto": 4809,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User17",
+        "fecha": "2021-10-24",
+        "monto": 1296,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User3",
+        "fecha": "2021-02-12",
+        "monto": 3401,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User32",
+        "fecha": "2021-01-02",
+        "monto": 4831,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User46",
+        "fecha": "2021-07-07",
+        "monto": 298,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User21",
+        "fecha": "2021-11-19",
+        "monto": 1910,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User33",
+        "fecha": "2021-09-13",
+        "monto": 3947,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User29",
+        "fecha": "2021-01-17",
+        "monto": 3777,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User3",
+        "fecha": "2021-11-17",
+        "monto": 1092,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User1",
+        "fecha": "2021-12-24",
+        "monto": 1675,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User41",
+        "fecha": "2021-04-21",
+        "monto": 591,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User41",
+        "fecha": "2021-10-21",
+        "monto": 844,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User8",
+        "fecha": "2021-08-17",
+        "monto": 2972,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User37",
+        "fecha": "2021-11-09",
+        "monto": 4510,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User10",
+        "fecha": "2021-07-16",
+        "monto": 2531,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User25",
+        "fecha": "2021-05-01",
+        "monto": 3799,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User35",
+        "fecha": "2021-03-22",
+        "monto": 3727,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User23",
+        "fecha": "2022-01-01",
+        "monto": 4444,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User1",
+        "fecha": "2021-05-15",
+        "monto": 3316,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User41",
+        "fecha": "2021-04-02",
+        "monto": 3362,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User1",
+        "fecha": "2021-06-18",
+        "monto": 685,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User19",
+        "fecha": "2021-03-07",
+        "monto": 3562,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User3",
+        "fecha": "2021-06-26",
+        "monto": 575,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User34",
+        "fecha": "2021-04-10",
+        "monto": 2220,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User14",
+        "fecha": "2021-07-25",
+        "monto": 1715,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User33",
+        "fecha": "2021-12-01",
+        "monto": 193,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User30",
+        "fecha": "2021-02-16",
+        "monto": 703,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User7",
+        "fecha": "2021-02-07",
+        "monto": 1190,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User27",
+        "fecha": "2021-03-31",
+        "monto": 3070,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User3",
+        "fecha": "2021-08-03",
+        "monto": 3709,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User27",
+        "fecha": "2021-06-09",
+        "monto": 4802,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User22",
+        "fecha": "2021-12-11",
+        "monto": 4035,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User6",
+        "fecha": "2021-04-20",
+        "monto": 300,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User43",
+        "fecha": "2021-09-26",
+        "monto": 3456,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User44",
+        "fecha": "2021-10-15",
+        "monto": 4498,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User8",
+        "fecha": "2021-08-19",
+        "monto": 741,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User19",
+        "fecha": "2021-01-01",
+        "monto": 4931,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User42",
+        "fecha": "2021-07-01",
+        "monto": 875,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User12",
+        "fecha": "2021-12-29",
+        "monto": 1212,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User13",
+        "fecha": "2021-12-23",
+        "monto": 3334,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User33",
+        "fecha": "2021-06-25",
+        "monto": 640,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User15",
+        "fecha": "2021-08-16",
+        "monto": 1023,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User14",
+        "fecha": "2021-06-17",
+        "monto": 1741,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User43",
+        "fecha": "2021-06-23",
+        "monto": 322,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User34",
+        "fecha": "2021-04-16",
+        "monto": 1837,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User18",
+        "fecha": "2021-11-12",
+        "monto": 938,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User39",
+        "fecha": "2021-05-14",
+        "monto": 2279,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User8",
+        "fecha": "2021-12-09",
+        "monto": 922,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User8",
+        "fecha": "2021-08-16",
+        "monto": 283,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User11",
+        "fecha": "2021-04-30",
+        "monto": 3958,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User6",
+        "fecha": "2021-01-31",
+        "monto": 4895,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User4",
+        "fecha": "2021-07-24",
+        "monto": 300,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User13",
+        "fecha": "2021-11-07",
+        "monto": 3413,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User41",
+        "fecha": "2021-12-12",
+        "monto": 1388,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User14",
+        "fecha": "2021-08-25",
+        "monto": 1310,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User12",
+        "fecha": "2021-10-31",
+        "monto": 4556,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User37",
+        "fecha": "2021-10-30",
+        "monto": 1406,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User9",
+        "fecha": "2021-09-30",
+        "monto": 395,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User30",
+        "fecha": "2021-02-12",
+        "monto": 1672,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User47",
+        "fecha": "2021-06-01",
+        "monto": 3100,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User17",
+        "fecha": "2021-01-14",
+        "monto": 2048,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User46",
+        "fecha": "2021-11-25",
+        "monto": 1899,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User6",
+        "fecha": "2021-09-21",
+        "monto": 3818,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User19",
+        "fecha": "2021-06-16",
+        "monto": 903,
+        "estado": "pendiente"
+    },
+    {
+        "user_id": "User10",
+        "fecha": "2021-11-27",
+        "monto": 1463,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User18",
+        "fecha": "2021-03-09",
+        "monto": 1889,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User20",
+        "fecha": "2021-06-30",
+        "monto": 3708,
+        "estado": "aprovado"
+    },
+    {
+        "user_id": "User40",
+        "fecha": "2021-03-13",
+        "monto": 1265,
+        "estado": "rechazado"
+    },
+    {
+        "user_id": "User35",
+        "fecha": "2021-07-07",
+        "monto": 4822,
+        "estado": "aprovado"
+    }
+]
