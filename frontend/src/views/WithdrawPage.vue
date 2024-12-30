@@ -1,18 +1,17 @@
+
+
 <template>
     <div :class="['DepWithPage', {'dark-mode': isDarkMode}]">
-        <h1>Deposit</h1>
-        <DepositTab />
+        <h1>Withdraw</h1>
+        <WithdrawTab/>
     </div>
 </template>
-
 <script>
-import DepositTab from '@/components/DepositTab.vue';
-
-
+import WithdrawTab from '@/components/WithdrawTab.vue';
 export default {
-    name : 'DepWithPage',
+    name: 'DepWithPage',
     components: {
-        DepositTab,
+        WithdrawTab,
     },
     props: {
         isDarkMode: {
@@ -20,6 +19,7 @@ export default {
             default: false
         }
     },
+
 }
 </script>
 <style scoped>

@@ -26,11 +26,22 @@
       </form>
     </div>
   </div>
+  <ModalComponent
+    v-if="showModal"
+    :title="modalTitle"
+    :message="modalMessage"
+    :visible="showModal"
+    @close="showModal = false"
+  />
 </template>
 <script>
   import axios from 'axios';
+  import ModalComponent from './ModelComponent.vue';
     export default {
         name: 'LoginForm',
+        components: {
+          ModalComponent
+        },
         props: {
           isDarkMode: {
             type: Boolean,
@@ -41,7 +52,10 @@
             return {
                 username: '',
                 password: '',
-                passwordVisible: false
+                passwordVisible: false,
+                showModal: false,
+                modalTitle: '',
+                modalMessage: ''
             };
         },
         methods : {
@@ -51,17 +65,26 @@
           async submitForm(){
               try{
                   const apiUrl = process.env.VUE_APP_API_URL;
+                  console.log(apiUrl );
                   const  response = await axios.post(`${apiUrl}/Login`, {
                       username: this.username,
                       password: this.password,
                       appkey: "",
-                      method: 'POST',});
+                      method: 'POST',
+                      whitcredentials: true,
+                      Headers: {
+                          'Content-Type': 'application/json',
+                           'Cache-Control': 'no-cache'
+                      }
+                      });
                       if(response.data && response.data.data.token && response.data.data)
                       {
                           const token = response.data.data.token;
                           const privileges = response.data.data.privilege.map(p => p.privilege_id);
                           if(privileges.length === 0){
-                              alert('You have no power here');
+                              this.showModal = true;
+                              this.modalTitle = 'Access Denied';
+                              this.modalMessage = 'You do not have access to this application';
                               return;
                           }
                           localStorage.setItem('token', token);
