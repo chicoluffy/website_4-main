@@ -1,10 +1,11 @@
 <!--si supieras que aun te extraño-->
 <template>
-    <div :class="['DepWithPage', {'dark-mode': isDarkMode}]">
+  <div :class="['DepWithPage', {'dark-mode': isDarkMode}]">
     <h1>Automatic Deposit</h1>
     <ul class="card-list">
-      <li class="card" v-for="(item, index) in visibleItems" :key="index">
+      <li class="card" v-for="(item, index) in visibleItems" :key="index" :class="{'dark-mode': isDarkMode}">
         <div class="card-content">
+          <!-- Información de la tarjeta -->
           <div class="card-info">
             <div>
               <a>User_id</a>
@@ -18,12 +19,20 @@
           <div class="card-details">
             <div>
               <a>Monto</a>
-              <small>{{ item.monto }}</small>
+              <small>${{ item.monto }}</small>
             </div>
             <div>
               <a>Estado</a>
-              <small>{{ item.estado }}</small>
+              <small :class="{'status-pending': item.estado === 'pendiente', 'status-approved': item.estado === 'aprovado', 'status-rejected': item.estado === 'rechazado', 'dark-mode': isDarkMode}">
+                {{ item.estado }}
+              </small>
             </div>
+          </div>
+          <!-- Botón circular -->
+          <div>
+            <button :class="['circle-button', {'dark-mode': isDarkMode}]" @click="viewDetails(item)">
+              <i class="fas fa-info"></i>
+            </button>
           </div>
         </div>
       </li>
@@ -37,7 +46,7 @@ export default {
     props: {
         isDarkMode: {
             type: Boolean,
-            default: false
+            required:true
         }
     },
     data(){
@@ -56,6 +65,9 @@ export default {
         .catch(error => console.error(error));
     },
     methods:{
+      viewDetails(item){
+        alert(`See more information about: ${item.user_id}`);
+      },
         //eliminar este metodo y cambiar por un websocket
         showItemsOneByOne(){
             this.items.forEach((item, index)=>{
@@ -79,6 +91,7 @@ export default {
   padding: 20px;
   max-height: 100vh; /* Ajusta la altura máxima */
   overflow-y: auto; /* Agrega scroll vertical */
+  width: 95%;
 }
 
 .card-list {
@@ -93,8 +106,10 @@ export default {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .card.dark-mode {
@@ -119,6 +134,67 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+.circle-button{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 5px; 
+}
+.circle-button:hover{
+  background-color: #0056b3;
+}
+.circle-button i{
+  font-size: 16px;
+}
+.status-pending{
+  color: orange;
+}
+.status-approved{
+  color: green;
+}
+.status-rejected{
+  color: red;
+}
+/*Modo oscuro*/
+.DepWithPage.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+.card.card.dark-mode{
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
+.circle-button.dark-mode{
+  background-color: #333;
+  color: #e0e0e0;
+}
+.circle-button.dark-mode:hover{
+  background-color: #555;
+}
+.status-pending.dark-mode {
+  color: #ff9800;
+}
+
+.status-approved.dark-mode {
+  color: #4caf50;
+}
+
+.status-rejected.dark-mode {
+  color: #f44336;
 }
 
 

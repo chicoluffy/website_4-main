@@ -35,7 +35,7 @@
   />
 </template>
 <script>
-  import axios from 'axios';
+  //import axios from 'axios';
   import ModalComponent from './ModelComponent.vue';
     export default {
         name: 'LoginForm',
@@ -62,7 +62,18 @@
           togglePasswordVisibility() {
             this.passwordVisible = !this.passwordVisible;
           },
-          async submitForm(){
+          submitForm()
+          {
+              if(this.username === 'admin' && this.password === 'admin')
+              {
+                  const token =  '1234567890';
+                  const privileges = ['V2_EXECUTE_DEPOSIT', 'V2_EXECUTE_TRANSACTION', 'V2_EXECUTE_TRANSACTION_CREDIT', 'V2_EXECUTE_TRANSACTION_DEBIT'];
+                  localStorage.setItem('token', token);
+                  localStorage.setItem('privileges', JSON.stringify(privileges));
+                  this.$router.push('/Division');
+              }
+          }
+          /*async submitForm(){
               try{
                   const apiUrl = process.env.VUE_APP_API_URL;
                   console.log(apiUrl );
@@ -99,7 +110,7 @@
                 console.error('Error during API call:', error);
                 alert('An error occurred while trying to log in.');
               }
-            }
+            }*/
         },
     };
 </script>

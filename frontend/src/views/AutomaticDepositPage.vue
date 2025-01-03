@@ -1,5 +1,9 @@
 <template>
-    <AutomaticDep></AutomaticDep>
+    <div :class="['AutomaticDepositPage', {'dark-mode': isDarkMode}]">
+        <div class="AutomaticDepositPage">
+            <AutomaticDep :isDarkMode="isDarkMode"/>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -17,3 +21,18 @@ export default {
     }
 }
 </script>
+<style scoped>
+.AutomaticDepositPage{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #333;
+}
+.AutomaticDepositPage.dark-mode{
+    background-color: #121212;
+    color: #fff;
+}
+
+
+</style>
