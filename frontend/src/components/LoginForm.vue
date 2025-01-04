@@ -62,7 +62,7 @@
           togglePasswordVisibility() {
             this.passwordVisible = !this.passwordVisible;
           },
-          submitForm()
+          /*submitForm()
           {
               if(this.username === 'admin' && this.password === 'admin')
               {
@@ -72,8 +72,8 @@
                   localStorage.setItem('privileges', JSON.stringify(privileges));
                   this.$router.push('/Division');
               }
-          }
-          /*async submitForm(){
+          }*/
+          async submitForm(){
               try{
                   const apiUrl = process.env.VUE_APP_API_URL;
                   console.log(apiUrl );
@@ -110,7 +110,7 @@
                 console.error('Error during API call:', error);
                 alert('An error occurred while trying to log in.');
               }
-            }*/
+            }
         },
     };
 </script>
