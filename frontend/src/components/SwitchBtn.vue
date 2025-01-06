@@ -71,4 +71,15 @@ export default{
   transform: translateX(1.6em);
 }
 /*termina el switch para cambiar de color */
+/*Estilos para pantallas pequeñas*/
+@media(max-width: 600px){
+  .switch{
+    width: 3em;
+    height: 1.8em;
+  }
+  .slider::before{
+    height: 1.8em;
+    width: 1.8em;
+  }
+}
 </style>

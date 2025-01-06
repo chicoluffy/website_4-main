@@ -78,4 +78,18 @@ export default {
   top: 20px;
   right: 20px;
 }
+/* Estilos para pantallas pequeñas*/
+@media(max-width: 600px){
+  .login-page{
+    padding: 10px;
+  }
+  .header{
+    justify-content: center;
+  }
+  .content{
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
 </style>

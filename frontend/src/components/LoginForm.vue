@@ -35,7 +35,7 @@
   />
 </template>
 <script>
-  //import axios from 'axios';
+  import axios from 'axios';
   import ModalComponent from './ModelComponent.vue';
     export default {
         name: 'LoginForm',
@@ -182,5 +182,18 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+/*Estilos para pantallas pequeñas*/
+@media(max-width: 600px){
+  .login-container{
+    padding: 10px;
+  }
+  .login-input{
+    font-size: small;
+    padding: 8px;
+  }
+  button{
+    font-size: small;
+  }
 }
 </style> 
