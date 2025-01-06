@@ -1,23 +1,18 @@
 <template>
-   <div :class="['sidebar',{'dark-mode':isDarkMode}]">
-    <ul>
-        <li v-for="item in filteredMenuItems" :key="item.text">
-            <RouterLink :to="item.link">
-              <i :class="item.icon"></i>{{ item.text }}
-            </RouterLink>
-        </li>
-    </ul>     
+   <div :class="['sidebar',{'dark-mode':isDarkMode, 'is-open': isSidebarOpen }]">
+      
    </div>
 </template>
 
 <script>
+import EventBus from '@/eventBus/eventBus';
     export default{
         name: 'SidebarComponent',
         props:{
             isDarkMode:{
                 type: Boolean,
                 required: true
-            }
+            },
         },
         data(){
             return{
@@ -30,7 +25,8 @@
                     {text: 'Single Deposits', link: '/home/singleDeposit',icon:'fa-solid fa-money-bill-transfer',permission:'V2_EXECUTE_TRANSACTION_CREDIT'},
                     {text: 'Import CSV', link: '/home/CSV',icon:'fa-solid fa-money-bill-transfer',permission:'V2_EXECUTE_TRANSACTION_DEBIT'},
                 ],
-                privileges: []
+                privileges: [],
+                isSidebarOpen: false,
             };
         },
         computed:{
@@ -41,22 +37,59 @@
         methods:{
           hasPermission(permission){
             return this.privileges.includes('V2_FINANCE_ADMIN') || this.privileges.includes(permission);  
-          }
+          },
         },
         mounted(){
           const privileges = localStorage.getItem('privileges');
           if(privileges){
             this.privileges = JSON.parse(privileges);
           }
+          EventBus.on('toggle-sidebar', (isSidebarOpen) => {
+            this.isSidebarOpen = isSidebarOpen;
+          });
         }
     }
 </script>
 
 <style scoped>
 .sidebar {
-  width: 100%;
-  height: 100vh;
-  transition: background-color 0.3s;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.sidebar.is-open {
+  transform: translateX(0);
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 0;
+  padding: 15px 20px; /* Espaciado interno */
+  border-bottom: 1px solid #333; /* Separador entre elementos */
+}
+.sidebar li a {
+  text-decoration: none; /* Sin subrayado */
+  color: #52a5e0; /* Color del texto */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaciado entre ícono y texto */
+}
+
+.sidebar li a:hover {
+  background-color: #1b2a30; /* Cambio de fondo al pasar el mouse */
+  color: #fff; /* Texto blanco al resaltar */
 }
 
 .sidebar.dark-mode {
@@ -67,23 +100,6 @@
 .sidebar:not(.dark-mode) {
   background-color: #f4f4f4;
   color: black;
-}
-ul {
-  width: 100%;
-  list-style: none; /* Quitar el círculo */
-  padding: 0;
-  margin: 0;
-}
-li {
-    padding: 0.9rem;
- /* Añadir espacio entre los ítems */
-}
-
-li a {
-  color: inherit;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
 }
 
 .menu-icon {
@@ -98,5 +114,28 @@ li a {
 .sidebar:not(.dark-mode) li a {
   color: #2A3B47;
     text-decoration: none;
+}
+.toggle-button {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px; /* Sidebar más pequeño en dispositivos móviles */
+  }
+  .toggle-button {
+    display: block;
+  }
+  
 }
 </style>

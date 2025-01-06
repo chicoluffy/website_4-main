@@ -150,4 +150,23 @@ button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
+/* Estilos para pantallas pequeñas */
+@media(max-width: 600px){
+   .select-container{
+        gap: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;      
+   }
+   .select-label{
+       font-size: 14px;
+   }
+    .styled-select{
+        font-size: 14px;
+        padding: 8px;
+    }
+    button{
+        font-size: 14px;
+        padding: 8px;
+    }
+}
 </style>

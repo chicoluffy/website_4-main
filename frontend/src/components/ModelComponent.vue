@@ -77,4 +77,21 @@ export default {
     display: flex;
     justify-content: flex-end;
 }
+/*Estilos para pantallas pequeñas*/
+@media (max-width: 600px){
+    .modal{
+        width: 95%;
+        padding: 10px;
+    }
+    .modal-body{
+        flex: 1;
+    }
+    .modal-footer{
+        flex-direction: column;
+    }
+    .close-button{
+        font-size: 1.5rem;
+    }
+    
+}
 </style>

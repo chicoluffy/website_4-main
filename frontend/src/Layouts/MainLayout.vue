@@ -1,8 +1,7 @@
 <template>
     <div :class="['main-Layout',{'dark-mode':isDarkMode}]">
-        <NavBar :isDarkMode="isDarkMode"/>
+      <NavBar/>
         <div class="main-content">
-            <SidebarComponent  :isDarkMode="isDarkMode"/>
             <div class="content">
                 <router-view :isDarkMode="isDarkMode"/>
             </div>
@@ -10,24 +9,28 @@
     </div>
 </template>
 <script>
-import NavBar from '@/components/NavBar.vue';
 import EventBus from '@/eventBus/eventBus';
-import SidebarComponent from '@/components/Sidebar.vue';
+import NavBar from '@/components/NavBar.vue';
 export default {
     name: 'MainLayout',
     components: {
         NavBar,
-        SidebarComponent,
     },
     data() {
         return {
             isDarkMode: localStorage.getItem('dark-mode') === 'true' || (window.matchMedia('(prefers-color-scheme: dark)').matches),
+            isSidebarOpen: false,
         };
     },
     mounted() {
         EventBus.on('toggle-dark-mode', (isDarkMode) => {
             this.isDarkMode = isDarkMode;
         });
+    },
+    methods: {
+      toggleSidebar() {
+          this.isSidebarOpen = !this.isSidebarOpen;
+      },
     },
 };
 </script>
@@ -51,19 +54,17 @@ export default {
 
 .main-content {
   display: flex;
-  flex: 1;
-  height: 100vh;
-}
-
-.sidebar {
-  width: 230px;
-  transition: background-color 0.3s;
 }
 
 .content {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  transition: margin-left 0.3s ease;
+}
+/*estilos para pantallas pequeñas*/
+@media (max-width: 768px) {
+  .content{
+    margin-left: 0;
+  }
 }
 
 </style>

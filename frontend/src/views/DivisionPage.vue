@@ -75,4 +75,24 @@ import EventBus from '@/eventBus/eventBus';
     justify-content: center;
     align-items: center;
 }
+/* Agrega estilos adicionales aquí */
+@media(max-width: 600px){
+    .header{
+        padding: 0.5rem;
+    }
+    .switch-btn{
+        top: 10px;
+        right: 10px;
+    }
+    .content{
+        padding: 1rem;
+    }
+    .select-division{
+        width: 100%;
+        padding: 0.5rem;
+    }
+    .division-page{
+        padding: 0.5rem;
+    }
+}
 </style>
