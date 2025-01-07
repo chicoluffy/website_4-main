@@ -18,8 +18,8 @@
             placeholder="Password" 
             class="login-input" 
             />
-            <button type="button" @click="togglePasswordVisibility" class="password-toggle-button">
-              <i class="fas" :class="{ 'fa-eye-slash': passwordVisible, 'fa-eye': !passwordVisible }"></i>
+            <button type="button" @click="togglePasswordVisibility" class="btn rounded-fill">
+              <i class="bi" :class="{ 'bi-eye-slash-fill': passwordVisible, ' bi-eye-fill': !passwordVisible }"></i>
             </button>
         </div>
         <button type="submit">Login</button>
@@ -35,7 +35,7 @@
   />
 </template>
 <script>
-  import axios from 'axios';
+  //import axios from 'axios';
   import ModalComponent from './ModelComponent.vue';
     export default {
         name: 'LoginForm',
@@ -62,18 +62,16 @@
           togglePasswordVisibility() {
             this.passwordVisible = !this.passwordVisible;
           },
-          /*submitForm()
-          {
-              if(this.username === 'admin' && this.password === 'admin')
-              {
-                  const token =  '1234567890';
-                  const privileges = ['V2_EXECUTE_DEPOSIT', 'V2_EXECUTE_TRANSACTION', 'V2_EXECUTE_TRANSACTION_CREDIT', 'V2_EXECUTE_TRANSACTION_DEBIT'];
-                  localStorage.setItem('token', token);
-                  localStorage.setItem('privileges', JSON.stringify(privileges));
-                  this.$router.push('/Division');
-              }
-          }*/
-          async submitForm(){
+          submitForm(){
+            if(this.username === 'admin' && this.password === 'admin'){
+              this.$router.push('/Division');
+            }else{
+              this.showModal = true;
+              this.modalTitle = 'Invalid credentials';
+              this.modalMessage = 'The username or password is incorrect';
+            }
+          }
+          /*async submitForm(){
               try{
                   const apiUrl = process.env.VUE_APP_API_URL;
                   console.log(apiUrl );
@@ -110,7 +108,7 @@
                 console.error('Error during API call:', error);
                 alert('An error occurred while trying to log in.');
               }
-            }
+            }*/
         },
     };
 </script>
@@ -171,18 +169,6 @@ h1 {
   text-align: center;
 }
 
-button {
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
 /*Estilos para pantallas pequeñas*/
 @media(max-width: 600px){
   .login-container{
