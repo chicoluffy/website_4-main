@@ -13,7 +13,9 @@
         </a>
         </li>
       </ul>
-        <LogoutBtn/>
+    <div>
+      <LogoutBtn/>
+    </div>
     </div>
   </div>
 </nav>
@@ -26,12 +28,7 @@ import LogoutBtn from './LogoutBtn.vue';
     components:{
       LogoutBtn,
     },
-    props:{
-      isDarkMode:{
-        type: Boolean,
-        required: true
-      },
-    },
+
     data(){
       return{
         menuItems:[
@@ -44,6 +41,7 @@ import LogoutBtn from './LogoutBtn.vue';
           {text: 'Import CSV', link: '/home/CSV',icon:'fa-solid fa-money-bill-transfer',permission:'V2_EXECUTE_TRANSACTION_DEBIT'},
         ],
         privileges: [],
+       
       }
     },
     computed:{

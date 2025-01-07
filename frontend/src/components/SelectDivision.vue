@@ -2,7 +2,7 @@
     <div :class="['select-container',{ 'dark-mode': isDarkMode }]" >
         <label for="icon-select" class="select-label">Select a countrie:</label>
         <div class="select-wrapper">
-            <select class="styled-select" :class="{'dark-mode': isDarkMode}" v-model="selectedOption" @change="onSelectChange">
+            <select class="form-select" :class="{'dark-mode': isDarkMode}" v-model="selectedOption" @change="onSelectChange">
                 <option disabled value="">Please select one</option>
                 <option v-for="option in options" :key="option.value" :value="option.value">
                  {{ option.label }}
@@ -29,15 +29,7 @@
             return{
                 selectedOption: "",
                 options:[
-                    {value: "DivisionCastleBetCongo",label: "Division Congo"},
-                    {value: "DivisionGambia",label: "Division Gambia"},
-                    {value: "DivisionGhana",label: "Division Ghana"},
-                    {value: "DivisionKenya",label: "Division Kenya"},
-                    {value: "DivisionLesotho",label: "Division Lesotho"},
                     {value: "DivisionMalawi",label: "Division Malawi"},
-                    {value: "DivisionCastleBetNamibia", label: "Division Namibia"},
-                    {value: "DivisionUganda", label: "Division Uganda"},
-                    {value: "DivisionCastleBet", label: "Division Zambia"},
                 ]
             }
         },
@@ -83,50 +75,6 @@
     position: relative;
     width: 100%;
 }
-.styled-select {
-    width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  color: #333;
-  appearance: none; /* Elimina el estilo por defecto del navegador */
-  -webkit-appearance: none; /* Elimina el estilo por defecto del navegador en Safari */
-  -moz-appearance: none; /* Elimina el estilo por defecto del navegador en Firefox */
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 16px 16px;
-}
-.styled-select.dark-mode {
-  background-color: #2a3b47;
-  color: #52A5E0;
-  border: 1px solid #52A5E0;
-}
-.styled-select:focus.dark-mode{
-    border-color: #192229;
-    outline: none;
-}
-.styled-select:not(.dark-mode) {
-    width: 100%;
-    padding: 0.6rem;
-    font-size: 0.9rem;
-    border: 1px solid #ccc;
-    border-radius: 0.2rem;
-    background-color: white;
-    color : #333;
-    appearance: none;/* Elimina el estilo por defecto del navegador */
-    -webkit-appearance: none; /* Elimina el estilo por defecto del navegador en Safari */
-    -moz-appearance: none;/* Elimina el estilo por defecto del navegador en Firefox */
-    background-repeat: no-repeat;
-    background-position: right 0.6rem center;
-    background-size: 0.9rem 0.9rem;
-}
-.styled-select:focus:not(.dark-mode){
-    border-color: #007bff;
-    outline: none;
-}
-
 .icon {
   font-size: 18px;
 }
@@ -151,22 +99,5 @@ button:disabled {
   cursor: not-allowed;
 }
 /* Estilos para pantallas pequeñas */
-@media(max-width: 600px){
-   .select-container{
-        gap: 1rem;
-        padding-left: 1rem;
-        padding-right: 1rem;      
-   }
-   .select-label{
-       font-size: 14px;
-   }
-    .styled-select{
-        font-size: 14px;
-        padding: 8px;
-    }
-    button{
-        font-size: 14px;
-        padding: 8px;
-    }
-}
+
 </style>

@@ -1,7 +1,18 @@
 <template>
-    <div :class="['DepWithPage', {'dark-mode': isDarkMode}]">
-        <h1>Deposit</h1>
+    <div :class="['container', {'dark-mode': isDarkMode}]">
+        <div class="row">
+            <div class="col">
+                <h1>Deposit</h1>
+            </div>
+            <div class="col">
+                <form class="form-inline d-flex gap-2">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
         <DepositTab />
+       
     </div>
 </template>
 
@@ -22,16 +33,3 @@ export default {
     },
 }
 </script>
-<style scoped>
-.DepWithPage{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    color: #333;
-}
-.DepWithPage.dark-mode{
-    background-color: #2a3b47;
-    color: #fff;
-}
-</style>

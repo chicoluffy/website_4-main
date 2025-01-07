@@ -1,13 +1,11 @@
 <template>
-    <div :class= "['home-page',{'dark-mode':isDarkMode}]">
-      <div class="content">
+    <div :class= "['container',{'dark-mode':isDarkMode}]">
         <h1>Welcome, {{ userName }}</h1>
-        <ul>
+        <ul class="list-group">
           <li v-for="privilege in privileges" :key="privilege">
             {{ privilege }}
           </li>
         </ul>
-      </div>
     </div>
 </template>
 
